@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:information_retrieval/features/add%20document/cubit/add_document_cubit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AddDocumentScreen extends StatefulWidget {
   const AddDocumentScreen({super.key});
@@ -23,12 +24,15 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
     if (content.isNotEmpty) {
       context.read<AddDocumentCubit>().addDocument(content);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter document content'),
-          backgroundColor: Colors.orange,
-        ),
-      );
+
+      Fluttertoast.showToast(
+        msg: "Please enter document content",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.orange,
+        fontSize: 16.0
+    );
+
     }
   }
 
@@ -56,20 +60,15 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
       body: BlocConsumer<AddDocumentCubit, AddDocumentState>(
         listener: (context, state) {
           if (state is AddDocumentSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Document added successfully!'),
-                backgroundColor: Colors.green,
-              ),
-            );
             Navigator.pop(context, true); // Return true to indicate success
           } else if (state is AddDocumentError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.message),
-                backgroundColor: Colors.red,
-              ),
-            );
+                  Fluttertoast.showToast(
+        msg: state.message,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        fontSize: 16.0
+    );
           }
         },
         builder: (context, state) {

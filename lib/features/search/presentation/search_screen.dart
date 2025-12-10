@@ -8,6 +8,7 @@ import 'package:information_retrieval/features/search/widgets/search_results_lis
 import 'package:information_retrieval/features/search/widgets/search_empty_state.dart';
 import 'package:information_retrieval/features/search/widgets/search_error_state.dart';
 import 'package:information_retrieval/core/routes/app_routes.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -64,13 +65,20 @@ class _SearchScreenState extends State<SearchScreen> {
     
     // If document was added successfully, show a message
     if (result == true && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Document added to corpus'),
-          backgroundColor: Colors.green,
-          duration: Duration(seconds: 2),
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   const SnackBar(
+      //     content: Text('Document added to corpus'),
+      //     backgroundColor: Colors.green,
+      //     duration: Duration(seconds: 2),
+      //   ),
+      // );
+      Fluttertoast.showToast(
+        msg: "Document added to corpus",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        fontSize: 16.0
+    );
     }
   }
 
