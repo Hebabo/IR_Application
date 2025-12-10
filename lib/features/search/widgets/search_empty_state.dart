@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:information_retrieval/features/search/widgets/loading_animation.dart';
+import 'package:information_retrieval/features/search/widgets/default_animation.dart';
 
 class SearchEmptyState extends StatelessWidget {
   const SearchEmptyState({super.key});
@@ -10,7 +10,7 @@ class SearchEmptyState extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          LoadingAnimation(),
+          DefaultAnimation(),
           const SizedBox(height: 16),
           Text(
             'Start searching',

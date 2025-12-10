@@ -10,11 +10,8 @@ class ImageAssets {
 class AnimationAssets {
   static const String base = 'assets/animations/';
 
-    ///Onboarding
+    ///animations
   static const String searchLoad = '${base}search_load.gif';
+  static const String defaultSearch = '${base}default.gif';
   static const String searchFail = '${base}failed_search.gif';
-}
-
-class JsonAssets {
-  static const String base = 'assets/json/';
 }

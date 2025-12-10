@@ -8,7 +8,7 @@ class LoadingAnimation extends StatelessWidget {
 
   const LoadingAnimation({
     super.key,
-    this.size = 300,
+    this.size = 280,
   });
 
   @override

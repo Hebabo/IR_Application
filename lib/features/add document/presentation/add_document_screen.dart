@@ -82,9 +82,9 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    'Document Content',
+                    'Document Content:',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey[800],
                     ),
@@ -121,7 +121,7 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
                   ElevatedButton(
                     onPressed: isLoading ? null : _addDocument,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black87,
+                      backgroundColor: Colors.blue[900],
                       disabledBackgroundColor: Colors.grey[400],
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
@@ -140,7 +140,6 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
                         : const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.add, color: Colors.white),
                               SizedBox(width: 8),
                               Text(
                                 'Add Document',

@@ -27,6 +27,9 @@ class _SearchTextFieldState extends State<SearchTextField> {
       ),
       child: TextField(
         controller: widget.controller,
+        onTapOutside: (event) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
         onSubmitted: (_) => widget.onSubmitted(),
         decoration: InputDecoration(
           hintText: 'Enter search query',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:information_retrieval/data/models/search_model.dart';
 import 'package:information_retrieval/features/search/cubit/search_cubit.dart';
+import 'package:information_retrieval/features/search/widgets/loading_animation.dart';
 import 'package:information_retrieval/features/search/widgets/search_header.dart';
 import 'package:information_retrieval/features/search/widgets/search_results_list.dart';
 import 'package:information_retrieval/features/search/widgets/search_empty_state.dart';
@@ -112,7 +113,7 @@ class _SearchScreenState extends State<SearchScreen> {
             onClear: _onClearSearch,
             onMethodChanged: _onMethodChanged,
           ),
-
+      
           // Results Section
           Expanded(
             child: BlocBuilder<SearchCubit, SearchState>(
@@ -122,10 +123,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 } else if (state is SearchLoading) {
                   return const Center(
                     child:
-                    // LoadingAnimation(),
-                      CircularProgressIndicator(
-                      color: Colors.black87,
-                    ),
+                      LoadingAnimation(),
+                    //   CircularProgressIndicator(
+                    //   color: Colors.black87,
+                    // ),
                   );
                 } else if (state is SearchSuccess) {
                   return SearchResultsList(

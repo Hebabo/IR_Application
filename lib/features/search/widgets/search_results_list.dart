@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:information_retrieval/data/models/search_model.dart';
+import 'package:information_retrieval/features/search/widgets/fail_loading_animation.dart';
 import 'package:information_retrieval/features/search/widgets/search_result_card.dart';
 import 'package:information_retrieval/features/search/widgets/processing_steps_card.dart';
 import 'package:information_retrieval/features/search/widgets/suggested_terms_list.dart';
@@ -29,11 +30,7 @@ class SearchResultsList extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.search_off,
-              size: 80,
-              color: Colors.grey[300],
-            ),
+            FailLoadingAnimation(),
             const SizedBox(height: 16),
             Text(
               'No results found',

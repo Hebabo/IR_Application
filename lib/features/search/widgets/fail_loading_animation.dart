@@ -8,7 +8,7 @@ class FailLoadingAnimation extends StatelessWidget {
 
   const FailLoadingAnimation({
     super.key,
-    this.size = 300,
+    this.size = 280,
   });
 
   @override
