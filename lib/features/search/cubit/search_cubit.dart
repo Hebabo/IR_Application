@@ -39,6 +39,8 @@ class SearchCubit extends Cubit<SearchState> {
         method: method,
         processingSteps: searchResponse.processingSteps,
         totalResults: searchResponse.totalResults,
+        suggestedTerms: searchResponse.suggestedTerms,
+        query: query,
       ));
     } catch (e) {
       emit(SearchError(message: 'Failed to perform search: ${e.toString()}'));

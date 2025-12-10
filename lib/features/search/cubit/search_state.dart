@@ -14,16 +14,20 @@ class SearchSuccess extends SearchState {
   final SearchMethod method;
   final List<String> processingSteps;
   final int totalResults;
+  final List<String>? suggestedTerms;
+  final String query;
 
   SearchSuccess({
     required this.results,
     required this.method,
     required this.processingSteps,
     required this.totalResults,
+    this.suggestedTerms,
+    required this.query,
   });
 
   @override
-  List<Object?> get props => [results, method, processingSteps, totalResults];
+  List<Object?> get props => [results, method, processingSteps, totalResults, suggestedTerms, query];
 }
 
 class SearchError extends SearchState {

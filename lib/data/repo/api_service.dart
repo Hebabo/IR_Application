@@ -10,7 +10,7 @@ class ApiService {
     try {
       final url = Uri.parse('$baseUrl/api/Search/query');
       
-      // Map SearchMethod to API searchType (1 for inverted, 2 for positional)
+      // Map SearchMethod to API searchType (1 for inverted, 2 for positional, 3 for soundex)
       int searchType;
       switch (method) {
         case SearchMethod.invertedIndex:
@@ -20,7 +20,7 @@ class ApiService {
           searchType = 2;
           break;
         case SearchMethod.soundex:
-          searchType = 1; // Default to inverted index if soundex not supported
+          searchType = 3;
           break;
       }
       

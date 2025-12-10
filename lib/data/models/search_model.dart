@@ -1,3 +1,4 @@
+// Enum for search methods
 enum SearchMethod {
   invertedIndex,
   positionalIndex,
@@ -27,11 +28,13 @@ class SearchResponse {
   final List<DocumentResult> documents;
   final List<String> processingSteps;
   final int totalResults;
+  final List<String>? suggestedTerms; // For Soundex
 
   SearchResponse({
     required this.documents,
     required this.processingSteps,
     required this.totalResults,
+    this.suggestedTerms,
   });
 
   factory SearchResponse.fromJson(Map<String, dynamic> json) {
@@ -45,6 +48,9 @@ class SearchResponse {
               .toList() ??
           [],
       totalResults: json['totalResults'] ?? 0,
+      suggestedTerms: (json['suggestedTerms'] as List<dynamic>?)
+              ?.map((term) => term.toString())
+              .toList(),
     );
   }
 }
@@ -53,16 +59,19 @@ class SearchResponse {
 class SearchResult {
   final String title;
   final String snippet;
+  final double relevance;
 
   SearchResult({
     required this.title,
     required this.snippet,
+    required this.relevance,
   });
 
   factory SearchResult.fromJson(Map<String, dynamic> json) {
     return SearchResult(
       title: json['title'] ?? '',
       snippet: json['snippet'] ?? '',
+      relevance: (json['relevance'] ?? 0.0).toDouble(),
     );
   }
 
@@ -71,6 +80,7 @@ class SearchResult {
     return SearchResult(
       title: 'Document ${doc.docId}',
       snippet: doc.content,
+      relevance: 1.0 - (index / total), // Calculate relevance based on position
     );
   }
 
@@ -78,6 +88,7 @@ class SearchResult {
     return {
       'title': title,
       'snippet': snippet,
+      'relevance': relevance,
     };
   }
 }

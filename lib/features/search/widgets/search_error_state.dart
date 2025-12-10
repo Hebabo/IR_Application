@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:information_retrieval/features/search/widgets/fail_loading_animation.dart';
 
 class SearchErrorState extends StatelessWidget {
   final String message;
@@ -16,11 +17,12 @@ class SearchErrorState extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            size: 80,
-            color: Colors.red[300],
-          ),
+          // Icon(
+          //   Icons.error_outline,
+          //   size: 80,
+          //   color: Colors.red[300],
+          // ),
+          FailLoadingAnimation(),
           const SizedBox(height: 16),
           Text(
             'Error',

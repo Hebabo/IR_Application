@@ -7,8 +7,12 @@ class ImageAssets {
   static const String onboarding3 = '${base}onboarding3.png';
 }
 
-class LottieAssets {
-  static const String base = 'assets/lotties/';
+class AnimationAssets {
+  static const String base = 'assets/animations/';
+
+    ///Onboarding
+  static const String searchLoad = '${base}search_load.gif';
+  static const String searchFail = '${base}failed_search.gif';
 }
 
 class JsonAssets {

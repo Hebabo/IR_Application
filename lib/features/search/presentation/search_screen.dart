@@ -32,6 +32,15 @@ class _SearchScreenState extends State<SearchScreen> {
     }
   }
 
+  void _searchWithTerm(String term) {
+    _searchController.text = term;
+    // Use inverted index by default for suggested terms
+    setState(() {
+      _selectedMethod = SearchMethod.invertedIndex;
+    });
+    context.read<SearchCubit>().search(term, SearchMethod.invertedIndex);
+  }
+
   void _onMethodChanged(SearchMethod method) {
     setState(() {
       _selectedMethod = method;
@@ -112,7 +121,9 @@ class _SearchScreenState extends State<SearchScreen> {
                   return const SearchEmptyState();
                 } else if (state is SearchLoading) {
                   return const Center(
-                    child: CircularProgressIndicator(
+                    child:
+                    // LoadingAnimation(),
+                      CircularProgressIndicator(
                       color: Colors.black87,
                     ),
                   );
@@ -121,6 +132,9 @@ class _SearchScreenState extends State<SearchScreen> {
                     results: state.results,
                     processingSteps: state.processingSteps,
                     totalResults: state.totalResults,
+                    suggestedTerms: state.suggestedTerms,
+                    query: state.query,
+                    onSuggestedTermTap: _searchWithTerm,
                   );
                 } else if (state is SearchError) {
                   return SearchErrorState(
