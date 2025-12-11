@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:information_retrieval/features/search/widgets/default_animation.dart';
+import 'package:information_retrieval/core/widgets/default_animation.dart';
 
 class SearchEmptyState extends StatelessWidget {
   const SearchEmptyState({super.key});

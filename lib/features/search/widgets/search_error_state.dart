@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:information_retrieval/features/search/widgets/fail_loading_animation.dart';
+import 'package:information_retrieval/core/widgets/fail_loading_animation.dart';
 
 class SearchErrorState extends StatelessWidget {
   final String message;

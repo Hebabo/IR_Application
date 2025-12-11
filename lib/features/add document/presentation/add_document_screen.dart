@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:information_retrieval/features/add%20document/cubit/add_document_cubit.dart';
+import 'package:information_retrieval/features/add%20document/widgets/document_content_field.dart';
+import 'package:information_retrieval/features/add%20document/widgets/add_document_button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class AddDocumentScreen extends StatefulWidget {
@@ -24,16 +26,18 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
     if (content.isNotEmpty) {
       context.read<AddDocumentCubit>().addDocument(content);
     } else {
-
       Fluttertoast.showToast(
         msg: "Please enter document content",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.orange,
-        fontSize: 16.0
-    );
-
+        fontSize: 16.0,
+      );
     }
+  }
+
+  void _clearContent() {
+    _contentController.clear();
   }
 
   @override
@@ -62,13 +66,13 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
           if (state is AddDocumentSuccess) {
             Navigator.pop(context, true); // Return true to indicate success
           } else if (state is AddDocumentError) {
-                  Fluttertoast.showToast(
-        msg: state.message,
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: Colors.red,
-        fontSize: 16.0
-    );
+            Fluttertoast.showToast(
+              msg: state.message,
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: Colors.red,
+              fontSize: 16.0,
+            );
           }
         },
         builder: (context, state) {
@@ -80,6 +84,7 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  // Content Label
                   Text(
                     'Document Content:',
                     style: TextStyle(
@@ -91,76 +96,25 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
 
                   const SizedBox(height: 12),
 
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.grey[300]!),
-                    ),
-                    child: TextField(
-                      controller: _contentController,
-                      maxLines: 15,
-                      enabled: !isLoading,
-                      decoration: InputDecoration(
-                        hintText: 'Enter your document content here',
-                        hintStyle: TextStyle(color: Colors.grey[500]),
-                        border: InputBorder.none,
-                        contentPadding: const EdgeInsets.all(16),
-                      ),
-                      style: const TextStyle(
-                        fontSize: 15,
-                        height: 1.5,
-                      ),
-                    ),
+                  // Document Content Field
+                  DocumentContentField(
+                    controller: _contentController,
+                    enabled: !isLoading,
                   ),
 
                   const SizedBox(height: 24),
 
                   // Add Button
-                  ElevatedButton(
-                    onPressed: isLoading ? null : _addDocument,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[900],
-                      disabledBackgroundColor: Colors.grey[400],
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: isLoading
-                        ? const SizedBox(
-                            height: 20,
-                            width: 20,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(width: 8),
-                              Text(
-                                'Add Document',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
+                  AddDocumentButton(
+                    isLoading: isLoading,
+                    onPressed: _addDocument,
                   ),
 
                   const SizedBox(height: 16),
 
                   // Clear Button
                   TextButton(
-                    onPressed: isLoading
-                        ? null
-                        : () {
-                            _contentController.clear();
-                          },
+                    onPressed: isLoading ? null : _clearContent,
                     child: const Text(
                       'Clear',
                       style: TextStyle(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:information_retrieval/core/widgets/loading_animation.dart';
 import 'package:information_retrieval/data/models/search_model.dart';
 import 'package:information_retrieval/features/search/cubit/search_cubit.dart';
-import 'package:information_retrieval/features/search/widgets/loading_animation.dart';
 import 'package:information_retrieval/features/search/widgets/search_header.dart';
 import 'package:information_retrieval/features/search/widgets/search_results_list.dart';
 import 'package:information_retrieval/features/search/widgets/search_empty_state.dart';
@@ -63,15 +63,8 @@ class _SearchScreenState extends State<SearchScreen> {
   Future<void> _navigateToAddDocument() async {
     final result = await Navigator.pushNamed(context, AppRoutes.addDocument);
     
-    // If document was added successfully, show a message
+    // If document added successfully
     if (result == true && mounted) {
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   const SnackBar(
-      //     content: Text('Document added to corpus'),
-      //     backgroundColor: Colors.green,
-      //     duration: Duration(seconds: 2),
-      //   ),
-      // );
       Fluttertoast.showToast(
         msg: "Document added to corpus",
         toastLength: Toast.LENGTH_LONG,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:information_retrieval/core/widgets/fail_loading_animation.dart';
 import 'package:information_retrieval/data/models/search_model.dart';
-import 'package:information_retrieval/features/search/widgets/fail_loading_animation.dart';
 import 'package:information_retrieval/features/search/widgets/search_result_card.dart';
 import 'package:information_retrieval/features/search/widgets/processing_steps_card.dart';
 import 'package:information_retrieval/features/search/widgets/suggested_terms_list.dart';

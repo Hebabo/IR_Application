@@ -1,14 +1,14 @@
 class StringManager {
-  static const String onboarding1Title = 'Smart Search';
-  static const String onboarding2Title = 'Powerful Indexing';
-  static const String onboarding3Title = 'Accurate Results';
+  static const String onboarding1Title = 'Welcome to XRetrieval';
+  static const String onboarding2Title = 'Smart Indexing';
+  static const String onboarding3Title = 'Smarter Queries';
 
   static const String onboarding1Desc =
-      'Search through large document collections using advanced retrieval techniques.';
+      'Your intelligent search engine that helps you find your X.';
   static const String onboarding2Desc =
-      'Experience fast search using inverted, positional, and phonetic indexing.';
+      'Built with inverted, positional, and phonetic indexes for powerful retrieval.';
   static const String onboarding3Desc =
-      'Get precise results with Boolean queries, phrase search, and Soundex matching.';
+      'Boolean search, phrase matching, and Soundex — all in one engine.';
 
   static const String skip = 'Skip';
   static const String back = 'Previous';
