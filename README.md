@@ -92,6 +92,14 @@ Matches phonetically similar terms to improve recall for misspelled or similar-s
 ## App Preview
 
 ### Screenshots
+
+####  Add Document
+<div align="center">
+   <div>
+  <img src="./assets/screenshots/add_doc" width="20%" />
+  </div>
+</div>
+
 ####  onboarding
 <div align="center">
    <div>
@@ -104,21 +112,13 @@ Matches phonetically similar terms to improve recall for misspelled or similar-s
 ####  Search
 <div align="center">
    <div>
-  <img src="./assets/screenshots/default.jpg" width="10%" />
-  <img src="./assets/screenshots/inverted.jpg" width="10%" />
-  <img src="./assets/screenshots/positional.jpg" width="10%" />
-  <img src="./assets/screenshots/soundex.jpg" width="10%" />
+  <img src="./assets/screenshots/default.jpg" width="20%" />
+  <img src="./assets/screenshots/inverted.jpg" width="20%" />
+  <img src="./assets/screenshots/positional.jpg" width="20%" />
+  <img src="./assets/screenshots/soundex.jpg" width="20%" />
   </div>
 </div>
 
-####  Add Document
-<div align="center">
-   <div>
-  <img src="./assets/screenshots/home_load_light.jpg" width="20%" />
-  <img src="./assets/screenshots/home_light.jpg" width="20%" />
-  <img src="./assets/screenshots/details_light.jpg" width="20%" />
-  </div>
-</div>
 ---
 
 ## Project Structure
@@ -127,6 +127,7 @@ Matches phonetically similar terms to improve recall for misspelled or similar-s
 lib/
 ├── core/
 │   ├── cache/              # SharedPreferences for onboarding
+│   ├── config/             # API base URL
 │   ├── const/              # Constants (strings, assets)
 │   ├── routes/             # Navigation & routing
 │   └── utils/              # Utilities (text highlighter, stop words)
@@ -226,5 +227,6 @@ This project was developed as part of an **Information Retrieval course**, aimin
 ---
 
 ✨ **XRetrieval – Find Your X.**
+
 
 
