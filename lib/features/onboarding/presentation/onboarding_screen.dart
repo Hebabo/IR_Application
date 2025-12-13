@@ -6,6 +6,8 @@ import 'package:information_retrieval/core/routes/app_routes.dart';
 import 'package:information_retrieval/data/models/onboarding_model.dart';
 import 'package:information_retrieval/features/onboarding/bloc/onboarding_bloc.dart';
 import '../widgets/onboarding_page_item.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -88,11 +90,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     onPressed: () {
                       context.read<OnboardingBloc>().add(SkipEvent());
                     },
-                    child: const Text(
+                    child: Text(
                       StringManager.skip,
                       style: TextStyle(
                         color: Colors.black87,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                   ),
@@ -114,7 +116,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -134,7 +136,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             color: state.currentPageIndex > 0
                                 ? Colors.black87
                                 : Colors.grey,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                           ),
                         ),
                       ),
@@ -146,14 +148,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           pages.length,
                           (i) => AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
-                            margin: const EdgeInsets.symmetric(horizontal: 4),
-                            height: 6,
-                            width: state.currentPageIndex == i ? 20 : 6,
+                            margin: EdgeInsets.symmetric(horizontal: 4.w),
+                            height: 6.h,
+                            width: state.currentPageIndex == i ? 20.w : 6.w,
                             decoration: BoxDecoration(
                               color: state.currentPageIndex == i
                                   ? Colors.black
                                   : Colors.black26,
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10.r),
                             ),
                           ),
                         ),
@@ -166,9 +168,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(40),
                           ),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 26,
-                            vertical: 12,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 26.w,
+                            vertical: 12.h,
                           ),
                         ),
                         onPressed: () {
@@ -192,10 +194,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 fontSize: 16,
                               ),
                             ),
-                            const SizedBox(width: 6),
-                            const Icon(
+                            SizedBox(width: 6.w),
+                            Icon(
                               Icons.arrow_right_alt,
-                              size: 20,
+                              size: 20.sp,
                               color: Colors.white,
                             ),
                           ],

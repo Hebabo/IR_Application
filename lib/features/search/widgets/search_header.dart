@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:information_retrieval/data/models/search_model.dart';
 import 'package:information_retrieval/features/search/widgets/search_text_field.dart';
 import 'package:information_retrieval/features/search/widgets/search_method_dropdown.dart';
@@ -21,9 +22,18 @@ class SearchHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Detect if keyboard is open
+    final keyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
+    
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      // Reduce padding when keyboard is open
+      padding: EdgeInsets.fromLTRB(
+        20.w, 
+        0, 
+        20.w, 
+        keyboardOpen ? 8.h : 20.h, // Less padding when keyboard open
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +45,7 @@ class SearchHeader extends StatelessWidget {
             onClear: onClear,
           ),
 
-          const SizedBox(height: 16),
+          SizedBox(height: keyboardOpen ? 8.h : 16.h), // Less space when keyboard open
 
           // Method Dropdown
           SearchMethodDropdown(

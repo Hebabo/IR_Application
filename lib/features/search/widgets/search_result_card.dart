@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:information_retrieval/data/models/search_model.dart';
 import 'package:information_retrieval/core/utils/text_highlighter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchResultCard extends StatelessWidget {
   final SearchResult result;
@@ -15,34 +16,34 @@ class SearchResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: EdgeInsets.only(bottom: 12.h),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
-            blurRadius: 10,
+            blurRadius: 10.r,
             offset: const Offset(0, 2),
           ),
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Title
             Text(
               "${result.title}:",
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 18.sp,
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
 
-            // Content with highlighted search terms (excluding stop words)
+            // Content with highlighted search terms 
             RichText(
               text: TextSpan(
                 children: TextHighlighter.buildHighlightedText(

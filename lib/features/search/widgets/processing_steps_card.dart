@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProcessingStepsCard extends StatefulWidget {
   final List<String> steps;
@@ -22,10 +23,10 @@ class _ProcessingStepsCardState extends State<ProcessingStepsCard> {
     }
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: EdgeInsets.only(bottom: 12.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: Colors.grey[300]!),
       ),
       child: Column(
@@ -36,22 +37,22 @@ class _ProcessingStepsCardState extends State<ProcessingStepsCard> {
                 _isExpanded = !_isExpanded;
               });
             },
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(12.r),
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: EdgeInsets.all(16.w),
               child: Row(
                 children: [
                   Icon(
                     Icons.analytics_outlined,
                     color: Colors.purple[700],
-                    size: 20,
+                    size: 20.sp,
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: 12.w),
                   Expanded(
                     child: Text(
                       'Processing Steps',
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[800],
                       ),
@@ -62,6 +63,7 @@ class _ProcessingStepsCardState extends State<ProcessingStepsCard> {
                         ? Icons.keyboard_arrow_up
                         : Icons.keyboard_arrow_down,
                     color: Colors.grey[600],
+                    size: 24.sp,
                   ),
                 ],
               ),
@@ -69,21 +71,21 @@ class _ProcessingStepsCardState extends State<ProcessingStepsCard> {
           ),
           if (_isExpanded)
             Container(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 16.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Divider(),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   ...widget.steps.asMap().entries.map((entry) {
                     return Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
+                      padding: EdgeInsets.only(bottom: 8.h),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: 24,
-                            height: 24,
+                            width: 24.w,
+                            height: 24.h,
                             decoration: BoxDecoration(
                               color: Colors.purple[100],
                               shape: BoxShape.circle,
@@ -92,21 +94,21 @@ class _ProcessingStepsCardState extends State<ProcessingStepsCard> {
                               child: Text(
                                 '${entry.key + 1}',
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.purple[900],
                                 ),
                               ),
                             ),
                           ),
-                          const SizedBox(width: 12),
+                          SizedBox(width: 12.w),
                           Expanded(
                             child: Text(
                               entry.value,
                               style: TextStyle(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 color: Colors.grey[700],
-                                height: 1.4,
+                                height: 1.4.h,
                               ),
                             ),
                           ),

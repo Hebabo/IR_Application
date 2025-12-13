@@ -1,24 +1,23 @@
-
-// Step 3: Create a reusable LoadingAnimation widget
 import 'package:flutter/material.dart';
 import 'package:information_retrieval/core/const/assets_manager.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class DefaultAnimation extends StatelessWidget {
-  final double size;
+  final double maxHeight;
 
   const DefaultAnimation({
     super.key,
-    this.size = 280,
+    this.maxHeight = 260,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Image.asset(
-        AnimationAssets.defaultSearch,
-        width: size,
-        height: size,
-        fit: BoxFit.contain,
+    return SizedBox(
+      height: maxHeight.h, 
+      child: Center(
+        child: Image.asset(
+          AnimationAssets.defaultSearch,
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }

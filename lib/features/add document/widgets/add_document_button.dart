@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddDocumentButton extends StatelessWidget {
   final bool isLoading;
@@ -17,30 +18,30 @@ class AddDocumentButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.blue[900],
         disabledBackgroundColor: Colors.grey[400],
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        padding: EdgeInsets.symmetric(vertical: 16.w),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
         ),
       ),
       child: isLoading
-          ? const SizedBox(
-              height: 20,
-              width: 20,
+          ? SizedBox(
+              height: 20.h,
+              width: 20.w,
               child: CircularProgressIndicator(
                 color: Colors.white,
-                strokeWidth: 2,
+                strokeWidth: 2.sp,
               ),
             )
-          : const Row(
+          : Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.add, color: Colors.white),
-                SizedBox(width: 8),
+                SizedBox(width: 8.w),
                 Text(
                   'Add Document',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -4,6 +4,7 @@ import 'package:information_retrieval/features/add%20document/cubit/add_document
 import 'package:information_retrieval/features/add%20document/widgets/document_content_field.dart';
 import 'package:information_retrieval/features/add%20document/widgets/add_document_button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddDocumentScreen extends StatefulWidget {
   const AddDocumentScreen({super.key});
@@ -31,7 +32,7 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.orange,
-        fontSize: 16.0,
+        fontSize: 16.0.sp,
       );
     }
   }
@@ -51,11 +52,11 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
           icon: const Icon(Icons.arrow_back, color: Colors.black87),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
+        title: Text(
           'Add Document',
           style: TextStyle(
             color: Colors.black87,
-            fontSize: 24,
+            fontSize: 24.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -71,7 +72,7 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
               toastLength: Toast.LENGTH_LONG,
               gravity: ToastGravity.BOTTOM,
               backgroundColor: Colors.red,
-              fontSize: 16.0,
+              fontSize: 16.0.sp,
             );
           }
         },
@@ -80,7 +81,7 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
 
           return SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20.r),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -88,13 +89,13 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
                   Text(
                     'Document Content:',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey[800],
                     ),
                   ),
 
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12.h),
 
                   // Document Content Field
                   DocumentContentField(
@@ -102,7 +103,7 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
                     enabled: !isLoading,
                   ),
 
-                  const SizedBox(height: 24),
+                  SizedBox(height: 24.h),
 
                   // Add Button
                   AddDocumentButton(
@@ -110,16 +111,16 @@ class _AddDocumentScreenState extends State<AddDocumentScreen> {
                     onPressed: _addDocument,
                   ),
 
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
 
                   // Clear Button
                   TextButton(
                     onPressed: isLoading ? null : _clearContent,
-                    child: const Text(
+                    child: Text(
                       'Clear',
                       style: TextStyle(
                         color: Colors.black54,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                   ),

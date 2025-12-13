@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:information_retrieval/core/widgets/loading_animation.dart';
 import 'package:information_retrieval/data/models/search_model.dart';
 import 'package:information_retrieval/features/search/cubit/search_cubit.dart';
@@ -36,7 +37,6 @@ class _SearchScreenState extends State<SearchScreen> {
 
   void _searchWithTerm(String term) {
     _searchController.text = term;
-    // Use inverted index by default for suggested terms
     setState(() {
       _selectedMethod = SearchMethod.invertedIndex;
     });
@@ -47,7 +47,6 @@ class _SearchScreenState extends State<SearchScreen> {
     setState(() {
       _selectedMethod = method;
     });
-    // Re-search if there's already a query
     if (_searchController.text.trim().isNotEmpty) {
       _performSearch();
     }
@@ -63,93 +62,93 @@ class _SearchScreenState extends State<SearchScreen> {
   Future<void> _navigateToAddDocument() async {
     final result = await Navigator.pushNamed(context, AppRoutes.addDocument);
     
-    // If document added successfully
     if (result == true && mounted) {
       Fluttertoast.showToast(
         msg: "Document added to corpus",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.green,
-        fontSize: 16.0
-    );
+        fontSize: 16.sp,
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: const Text(
+        title: Text(
           'Search',
           style: TextStyle(
             color: Colors.black87,
-            fontSize: 24,
+            fontSize: 24.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.add_circle_outline,
               color: Colors.black87,
-              size: 28,
+              size: 28.sp,
             ),
             onPressed: _navigateToAddDocument,
             tooltip: 'Add Document',
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: 8.w),
         ],
       ),
-      body: Column(
-        children: [
-          // Search Header Section
-          SearchHeader(
-            searchController: _searchController,
-            selectedMethod: _selectedMethod,
-            onSearch: _performSearch,
-            onClear: _onClearSearch,
-            onMethodChanged: _onMethodChanged,
+      body: SafeArea(
+  child: GestureDetector(
+    onTap: () => FocusScope.of(context).unfocus(),
+    child: Column(
+      children: [
+        // Search Header (fixed height)
+        SearchHeader(
+          searchController: _searchController,
+          selectedMethod: _selectedMethod,
+          onSearch: _performSearch,
+          onClear: _onClearSearch,
+          onMethodChanged: _onMethodChanged,
+        ),
+
+        // Results (scrollable)
+        Expanded(
+          child: BlocBuilder<SearchCubit, SearchState>(
+            builder: (context, state) {
+              if (state is SearchInitial) {
+                return const SearchEmptyState();
+              } else if (state is SearchLoading) {
+                return const Center(child: LoadingAnimation());
+              } else if (state is SearchSuccess) {
+                return SearchResultsList(
+                  results: state.results,
+                  processingSteps: state.processingSteps,
+                  totalResults: state.totalResults,
+                  suggestedTerms: state.suggestedTerms,
+                  query: state.query,
+                  onSuggestedTermTap: _searchWithTerm,
+                );
+              } else if (state is SearchError) {
+                return SearchErrorState(
+                  message: state.message,
+                  onRetry: _performSearch,
+                );
+              }
+              return const SizedBox.shrink();
+            },
           ),
-      
-          // Results Section
-          Expanded(
-            child: BlocBuilder<SearchCubit, SearchState>(
-              builder: (context, state) {
-                if (state is SearchInitial) {
-                  return const SearchEmptyState();
-                } else if (state is SearchLoading) {
-                  return const Center(
-                    child:
-                      LoadingAnimation(),
-                    //   CircularProgressIndicator(
-                    //   color: Colors.black87,
-                    // ),
-                  );
-                } else if (state is SearchSuccess) {
-                  return SearchResultsList(
-                    results: state.results,
-                    processingSteps: state.processingSteps,
-                    totalResults: state.totalResults,
-                    suggestedTerms: state.suggestedTerms,
-                    query: state.query,
-                    onSuggestedTermTap: _searchWithTerm,
-                  );
-                } else if (state is SearchError) {
-                  return SearchErrorState(
-                    message: state.message,
-                    onRetry: _performSearch,
-                  );
-                }
-                return const SizedBox.shrink();
-              },
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
+    ),
+  ),
+),
+
     );
   }
 }

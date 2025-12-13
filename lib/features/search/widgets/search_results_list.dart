@@ -4,6 +4,7 @@ import 'package:information_retrieval/data/models/search_model.dart';
 import 'package:information_retrieval/features/search/widgets/search_result_card.dart';
 import 'package:information_retrieval/features/search/widgets/processing_steps_card.dart';
 import 'package:information_retrieval/features/search/widgets/suggested_terms_list.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchResultsList extends StatelessWidget {
   final List<SearchResult> results;
@@ -31,20 +32,20 @@ class SearchResultsList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FailLoadingAnimation(),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             Text(
               'No results found',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 20.sp,
                 color: Colors.grey[600],
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
               'Try a different search query',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 14.sp,
                 color: Colors.grey[500],
               ),
             ),
@@ -60,7 +61,7 @@ class SearchResultsList extends StatelessWidget {
     }
 
     return ListView.builder(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(20.w),
       itemCount: itemCount,
       itemBuilder: (context, index) {
         int currentIndex = index;
@@ -76,7 +77,7 @@ class SearchResultsList extends StatelessWidget {
                   'Found $totalResults ${totalResults == 1 ? 'result' : 'results'}',
                 ),
               ),
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
             ],
           );
         }

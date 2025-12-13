@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:information_retrieval/core/utils/stop_words.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextHighlighter {
   static List<TextSpan> buildHighlightedText(
@@ -21,7 +22,7 @@ class TextHighlighter {
           text: text,
           style: TextStyle(
             color: normalTextColor,
-            height: 1.4,
+            height: 1.4.h,
           ),
         ),
       ];
@@ -45,7 +46,7 @@ class TextHighlighter {
           text: text,
           style: TextStyle(
             color: normalTextColor,
-            height: 1.4,
+            height: 1.4.h,
           ),
         ),
       ];
@@ -73,7 +74,7 @@ class TextHighlighter {
             text: text.substring(currentIndex),
             style: TextStyle(
               color: normalTextColor,
-              height: 1.4,
+              height: 1.4.h,
             ),
           ),
         );
@@ -87,7 +88,7 @@ class TextHighlighter {
             text: text.substring(currentIndex, nearestMatch),
             style: TextStyle(
               color: normalTextColor,
-              height: 1.4,
+              height: 1.4.h,
             ),
           ),
         );
@@ -101,7 +102,7 @@ class TextHighlighter {
             color: highlightTextColor,
             fontWeight: FontWeight.bold,
             backgroundColor: highlightColor,
-            height: 1.4,
+            height: 1.4.h,
           ),
         ),
       );

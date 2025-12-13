@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:information_retrieval/core/widgets/fail_loading_animation.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchErrorState extends StatelessWidget {
   final String message;
@@ -26,35 +27,35 @@ class SearchErrorState extends StatelessWidget {
                 children: [
                   const Spacer(),
                   const FailLoadingAnimation(),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   Text(
                     'Error',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       color: Colors.grey[600],
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    padding: EdgeInsets.symmetric(horizontal: 40.w),
                     child: Text(
                       message,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         color: Colors.grey[500],
                       ),
                     ),
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: 24.h),
                   ElevatedButton(
                     onPressed: onRetry,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black87,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 12,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 32.h,
+                        vertical: 12.w,
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -66,7 +67,7 @@ class SearchErrorState extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  const SizedBox(height: 20), // Bottom padding
+                  SizedBox(height: 20.h), // Bottom padding
                 ],
               ),
             ),

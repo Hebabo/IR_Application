@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:information_retrieval/core/widgets/default_animation.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchEmptyState extends StatelessWidget {
   const SearchEmptyState({super.key});
@@ -11,20 +12,20 @@ class SearchEmptyState extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DefaultAnimation(),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           Text(
             'Start searching',
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 20.sp,
               color: Colors.grey[600],
               fontWeight: FontWeight.w500,
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
           Text(
             'Enter a query and select a search method',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 14.sp,
               color: Colors.grey[500],
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DocumentContentField extends StatelessWidget {
   final TextEditingController controller;
@@ -17,7 +18,7 @@ class DocumentContentField extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: Colors.grey[300]!),
       ),
       child: TextField(
@@ -28,11 +29,11 @@ class DocumentContentField extends StatelessWidget {
           hintText: 'Enter your document content here',
           hintStyle: TextStyle(color: Colors.grey[500]),
           border: InputBorder.none,
-          contentPadding: const EdgeInsets.all(16),
+          contentPadding: EdgeInsets.all(16.w),
         ),
-        style: const TextStyle(
-          fontSize: 15,
-          height: 1.5,
+        style: TextStyle(
+          fontSize: 15.sp,
+          height: 1.5.h,
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:information_retrieval/data/models/search_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchMethodDropdown extends StatelessWidget {
   final SearchMethod selectedMethod;
@@ -36,22 +37,22 @@ class SearchMethodDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: Colors.grey[300]!),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<SearchMethod>(
           value: selectedMethod,
           isExpanded: true,
-          icon: const Icon(Icons.keyboard_arrow_down),
+          icon: Icon(Icons.keyboard_arrow_down),
           dropdownColor: Colors.white,
-          menuMaxHeight: 300,
-          style: const TextStyle(
+          menuMaxHeight: 300.h,
+          style: TextStyle(
             color: Colors.black87,
-            fontSize: 16,
+            fontSize: 16.sp,
           ),
           items: SearchMethod.values.map((method) {
             return DropdownMenuItem(
@@ -60,10 +61,10 @@ class SearchMethodDropdown extends StatelessWidget {
                 children: [
                   Icon(
                     _getMethodIcon(method),
-                    size: 20,
+                    size: 20.sp,
                     color: Colors.black54,
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: 12.w),
                   Text(_getMethodDisplayName(method)),
                 ],
               ),
