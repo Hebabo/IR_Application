@@ -96,7 +96,7 @@ Matches phonetically similar terms to improve recall for misspelled or similar-s
 ####  Add Document
 <div align="center">
    <div>
-  <img src="./assets/screenshots/add_doc" width="20%" />
+  <img src="./assets/screenshots/add_doc.jpg" width="20%" />
   </div>
 </div>
 
@@ -227,6 +227,7 @@ This project was developed as part of an **Information Retrieval course**, aimin
 ---
 
 ✨ **XRetrieval – Find Your X.**
+
 
 
 
